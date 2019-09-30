@@ -1,0 +1,15 @@
+------------------------30-Sept-2019 (Mon)----------------------------------- 
+1. In order to run laravel application
+php -S localhost:6700 -t public
+
+2. Create docker-compose.yml file in the project directory
+
+3. Create Dockerfile
+
+4. Create default.conf file
+
+5. Run docker-compose up
+
+6. ERROR: for Docker_Laravel_db  Cannot start service db: b'Mounts denied: \r\nThe path /Applications/XAMPP/xamppfiles/htdocs/laravel-docker/pgdata\r\nis not shared from OS X and is not known to Docker.\r\nYou can configure shared paths from Docker -> Preferences... -> File Sharing.\r\nSee https://docs.docker.com/docker-for-mac/osxfs/#namespaces
+
+Simply Add the Project Folder in Docker -> Preferences -> File Sharing 
