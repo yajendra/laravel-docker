@@ -12,4 +12,54 @@ php -S localhost:6700 -t public
 
 6. ERROR: for Docker_Laravel_db  Cannot start service db: b'Mounts denied: \r\nThe path /Applications/XAMPP/xamppfiles/htdocs/laravel-docker/pgdata\r\nis not shared from OS X and is not known to Docker.\r\nYou can configure shared paths from Docker -> Preferences... -> File Sharing.\r\nSee https://docs.docker.com/docker-for-mac/osxfs/#namespaces
 
-Simply Add the Project Folder in Docker -> Preferences -> File Sharing 
+Simply Add the Project Folder in Docker -> Preferences -> File Sharing
+docker container ls
+1. docker exec -it Docker_Laravel_web(container name) bash 
+2. php atisan migrate
+It will create the 4 migrations
+3. php artisan make:seeder UsersTableSeeder
+
+----------------------------- 2 Oct 2019 (Wed) -------------------------------------------
+docker-compose up 
+Check the terminal it will show the db host
+Error - SQLSTATE[08006] [7] could not translate host name "db" to address: nodename nor servname provided, or not known (SQL: select * from "users")
+
+Change the db host in .env file with the host shown in terminal
+My Case - I have changed ir from db -> 0.0.0.0
+it works 
+
+
+In order to run redis we need to install predis 
+Error - Class 'Predis\Client' not found
+so in your project folder 
+composer require predis/predis
+it also updated in my composer directory 
+so it will be intsalled by default
+
+same error as in db hostname not able to resolve 
+so i have updated the .env file REDIS_HOST from redis to 0.0.0.0.
+error solved 
+
+php artisan migrate:refresh --seed
+
+php artisan cache:clear
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
